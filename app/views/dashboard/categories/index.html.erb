@@ -1,0 +1,66 @@
+<div class="w-75">
+
+  <%= form_with(model: @category, url: dashboard_categories_path, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "カテゴリ名" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, "カテゴリの説明" %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :major_category_id, "親カテゴリ" %>
+      <%= f.select :major_category_id, @major_categories.map { |mc| [mc.name, mc.id] }, {}, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+         <%= f.label "画像", class: "col-2 d-flex justify-content-start" %>
+         <% if @category.image.attached? %>
+           <%= image_tag @category.image, id: "category-image-preview", class: "img-fluid w-25" %>
+         <% else %>
+           <img src="#" id="category-image-preview" class="">
+         <% end %>
+         <div class="d-flex flex-column ml-2">
+           <small class="mb-3">600px×600px推奨。<br>商品カテゴリーの魅力が伝わる画像をアップロードして下さい。</small>
+           <%= f.label "画像を選択", for: "major_category_image", class: "btn samazon-submit-button" %>
+           <%= f.file_field :image, { onChange: "javascript: handleImage(this.files);", style: "display: none;"} %>
+         </div>
+    </div>
+    
+
+    <div class="form-group">
+      <%= f.submit "＋新規作成", class: "btn samazon-submit-button" %>
+    </div>
+  <% end %>
+
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col" class="w-25">ID</th>
+        <th scope="col">カテゴリ</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr>
+        <th scope="row"><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to "編集", edit_dashboard_category_path(category), class: "dashboard-edit-link" %>
+        </td>
+        <td>
+          <%= link_to "削除", dashboard_category_path(category), method: :delete, class: "dashboard-delete-link" %>
+        </td>        
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @categories %>
+</div>
+
+<%= javascript_include_tag "dashboard/categories/index" %>

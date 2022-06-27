@@ -1,0 +1,52 @@
+ご注文情報
+
+<%= mypage_cart_history_users_url(num: @user_cart.id) %>
+
+注文番号
+<%= @user_cart.id %>
+
+注文日時
+<%= Time.zone.now.strftime('%F %T') %>
+
+商品の小計
+￥<%= @user_cart.subtotal.fractional %>
+
+消費税
+￥<%= @user_cart.taxes.fractional %>
+
+送料
+￥<%= @user_cart.shipping_cost.fractional %>
+
+特急便
+￥<%= @user_cart.express_cost.fractional %>
+
+合計金額
+￥<%= @user_cart.total.fractional %>
+
+点数
+<%= @user_cart.cart_items.size %>点
+
+<% @user_cart_items.each.with_index(1) do |user_cart_item, i| %>
+<% product = @products[user_cart_item.item_id] %>
+購入商品名
+<%= product.name %>
+
+価格（単価）
+￥<%= product.price %>
+
+個数
+<%= user_cart_item.quantity %>
+
+画像URL
+<%= product.image_url || 'なし' %>
+
+注文URL
+<%= product.order_url || 'なし' %>
+
+ASIN
+<%= product.asin || 'なし' %>
+
+<% if @user_cart_items.size > i %>
+-----
+<% end %>
+<% end %>

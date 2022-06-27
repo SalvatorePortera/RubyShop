@@ -1,0 +1,397 @@
+<div class="d-flex justify-content-center">
+  <div class="row w-75">
+    <div class="col-5 offset-1">
+      
+      <div class="container">
+    <!-- カルーセル外枠 -->
+    <div id="main_visual" class="carousel slide" data-ride="carousel">
+      <!-- インジケーター -->
+      <ol class="carousel-indicators">
+        <li data-target="#main_visual" data-slide-to="0" class="active"></li>
+        <li data-target="#main_visual" data-slide-to="1"></li>
+        <li data-target="#main_visual" data-slide-to="2"></li>
+      </ol>
+      <!-- / インジケーター -->
+      <!-- カルーセル内枠 -->
+      <div class="carousel-inner">
+        <!-- スライド01 -->
+        <div class="carousel-item active">
+          
+          <% if @product.image_url.present? %>
+        <%= image_tag @product.image_url, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+          
+        </div>
+        <!-- / スライド01 -->
+        <!-- スライド02 -->
+        <div class="carousel-item">
+          <% if @product.image_url2.present? %>
+        <%= image_tag @product.image_url2, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url2, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド02 -->
+        <!-- スライド03 -->
+        <div class="carousel-item">
+          <% if @product.image_url3.present? %>
+        <%= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド03 -->
+        <!-- スライド04 -->
+        <div class="carousel-item">
+          <% if @product.image_url4.present? %>
+        <%= image_tag @product.image_url4, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド04 -->
+        <!-- スライド05 -->
+        <div class="carousel-item">
+          <% if @product.image_url5.present? %>
+        <%= image_tag @product.image_url5, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド05 -->
+        <!-- スライド06 -->
+        <div class="carousel-item">
+          <% if @product.image_url6.present? %>
+        <%= image_tag @product.image_url6, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド06 -->
+        <!-- スライド07 -->
+        <div class="carousel-item">
+          <% if @product.image_url7.present? %>
+        <%= image_tag @product.image_url7, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド07 -->
+        <!-- スライド08 -->
+        <div class="carousel-item">
+          <% if @product.image_url8.present? %>
+        <%= image_tag @product.image_url8, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド08 -->
+        <!-- スライド09 -->
+        <div class="carousel-item">
+          <% if @product.image_url9.present? %>
+        <%= image_tag @product.image_url9, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド09 -->
+        <!-- スライド10 -->
+        <div class="carousel-item">
+          <% if @product.image_url10.present? %>
+        <%= image_tag @product.image_url10, class: "w-100 img-fuild" %>
+      <% elsif @product.image.attached? %>
+        <%= image_tag @product.image, class: "w-100 img-fuild" %>
+      <% else %>
+        <%= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <% end %>
+          
+            <%#= image_tag @product.image_url3, class: "w-100 img-fuild" %>
+        </div>
+        <!-- / スライド10 -->
+      </div>
+      <!-- / カルーセル内枠 -->
+      <!-- コントローラー -->
+      <a class="carousel-control-prev" href="#main_visual" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">前に戻る</span>
+      </a>
+      <a class="carousel-control-next" href="#main_visual" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">次に進む</span>
+      </a>
+      <!-- / コントローラー -->
+    </div>
+    <!-- / カルーセル外枠 -->
+ </div>
+      
+      
+      <%# if @product.image_url.present? %>
+        <%#= image_tag @product.image_url, class: "w-100 img-fuild" %>
+      <%# elsif @product.image.attached? %>
+        <%#= image_tag @product.image, class: "w-100 img-fuild" %>
+      <%# else %>
+        <%#= image_tag "/images/dummy.png", class: "w-100 img-fuild" %>
+      <%# end %>
+    </div>
+
+
+    <div class="col">
+      <div class="d-flex flex-column">
+        <h1 class="">
+          <%= @product.name %>
+        </h1>
+        <p class="">
+          <%= @product.description %>
+        </p>
+        
+        <p class="">
+          (Brand)
+          <% if @product.brand.nil? %>
+          <%= '' %>
+          <% else %>
+          <%= @product.brand %>
+          <% end %>
+        </p>
+        
+        <hr>
+        <p class="d-flex align-items-end">
+          <strong>￥<%= @product.price %>（免税価格）</strong> ￥<%= @product.price_with_tax %>（消費税込価格）
+        </p>
+        <hr>
+        
+        
+        <p>
+          翌日配送: この商品は翌日配送対象（特急便）商品です。<br>
+          最短でご注文日の翌日中にお泊まりのホテルに届きます。<br>遅くとも翌々日午前中に届きます。
+        </p>
+        <p>
+          お届け先：お泊まりのホテルにお届けします。
+        </p>
+        <p>
+          支払い方法： クレジットカード
+        </p>
+        
+      </div>
+
+      <% if user_signed_in? %>
+          <%= form_with url: cart_create_users_path, local: true do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.hidden_field :name, value: @product.name %>
+          <%= f.hidden_field :price, value: @product.price %>
+          <div class="form-group row">
+            <%= f.label "数量", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.number_field :quantity, min:1, value:1, class: "form-control w-25"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7">
+
+              <%= f.submit "カートに追加", class: "btn samazon-submit-button w-100" do %>
+
+                <i class="fas fa-shopping-cart"></i>
+              <% end %>
+            </div>
+            <div class="col-5">
+              <%= link_to favorite_product_path, class: "btn samazon-favorite-button text-favorite w-100" do %>
+                <i class="fa fa-heart"></i><%= current_user.likes?(@product) ? "お気に入り解除" : "お気に入り" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="offset-1 col-11">
+      <hr class="w-100">
+      <h3 class="float-left">カスタマーレビュー</h3>
+      <h5>レビュー数: <% if @product.review_quantity.nil? %>
+      <%= 123 %>
+      <% else %>
+      <%= @product.review_quantity %></h1>
+      <% end %>
+      </h5>
+      <h5>総合評価:
+      <% if @product.rating_score.nil? %>
+      <%= 4.8 %>
+<%= image_tag "/images/rating5.JPG", class: "img-thumbnail" %>
+<% elsif @product.rating_score >= 0 and @product.rating_score <2.0 %>
+<%= @product.rating_score %>
+<%= image_tag "/images/rating1.JPG", class: "img-thumbnail" %>
+<% elsif @product.rating_score >= 2.0 and @product.rating_score <3.0 %>
+<%= @product.rating_score %>
+<%= image_tag "/images/rating2.JPG", class: "img-thumbnail" %>
+<% elsif @product.rating_score >= 3.0 and @product.rating_score <4.0 %>
+<%= @product.rating_score %>
+<%= image_tag "/images/rating3.JPG", class: "img-thumbnail" %>
+<% elsif @product.rating_score >= 4.0 and @product.rating_score <5.0 %>
+<%= @product.rating_score %>
+<%= image_tag "/images/rating4.JPG", class: "img-thumbnail" %>
+<% else %>
+<%= 5.0 %>
+<%= image_tag "/images/rating5.JPG", class: "img-thumbnail" %>
+<% end %>
+</h5>      
+      
+    </div>
+
+<div class="offset-1 col-10">
+      <div class="row">
+        <% @reviews.each do |review| %>
+        <div class="offset-md-5 col-md-5">
+          <h3 class="review-score-color"><%= score_on_star(review.score) %></h3>
+          <p class="h3"><%= review.content %></p>
+          
+          <label><%= l review.created_at %></label>
+          <p class="h5">
+            <%#= f.label "画像", class: "col-2 d-flex justify-content-start" %>
+     <% if review.image.attached? %>
+      <%= image_tag review.image, id: "review-image-preview", class: "img-fluid w-75" %>
+     <% else %>
+      <img src="#" id="review-image-preview" class=""> 
+     <% end %>
+          </p>
+        </div>
+        <% end %>
+      </div>
+ 
+      <% if user_signed_in? %>
+        <div class="row">
+          <div class="offset-md-5 col-md-5">
+            <%= form_with model: @review, url: product_reviews_path(@product) do |f| %>
+            <h4>評価</h4>
+               <%= f.select :score, @star_repeat_select, {}, class: "form-control m-2 review-score-color" %>
+               <h4>レビュー内容</h4>
+              <%= f.text_area :content, class: "form-control m-2" %>
+              <div class="d-flex flex-column ml-2">
+      <small class="mb-3">600px×600px推奨。<br>商品の魅力が伝わる画像をアップロードして下さい。</small>
+      <%= f.label "画像を選択", for: "review_image", class: "btn samazon-submit-button" %>
+      <%= f.file_field :image, { onChange: "javascript: handleImage(this.files);", style: "display: none;"} %>
+     </div>
+              <%= f.submit "レビューを追加" , class:"btn samazon-submit-button ml-2"%>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+    </div>  
+
+
+
+<div class="offset-1 col-10">
+  <div class="accordion" id="accordion-1">
+  <div class="card">
+    <h2 class="card-header" id="header-1">
+      <div class="accordion-1 text-center">
+      
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#card-1" aria-expanded="true" aria-controls="card-1">
+        上位レビュー Accordion Item #1
+      </button>
+      </div>
+    </h2>
+    <div id="card-1" class="collapse" aria-labelledby="header-1" data-bs-parent="#accordion-1">
+      <div class="card-body">
+        <strong>This is the first item's accordion body.</strong>
+        <% if @product.review_comments.nil? %>
+      <%= 123 %>
+      <% else %>
+      <%= @product.review_comments %>
+      <% end %>
+        <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  
+  <p> <strong>商品詳細情報</strong><br> 
+     <% if @product.detailed_explanation.nil? %>
+      <%= '' %>
+      <% else %>
+      <%= @product.detailed_explanation %>
+      <% end %>
+  </p>
+  <p> <strong>商品基本情報</strong><br>
+    <% if @product.product_spec.nil? %>
+      <%= '' %>
+      <% else %>
+      <%= @product.product_spec %>
+      <% end %>
+  </p>
+  
+  <p> <strong>商品サイズ</strong><br>
+    <% if @product.product_demension.nil? %>
+      <%= '' %>
+      <% else %>
+      <%= @product.product_demension %>
+      <% end %>
+  </p>
+  
+  <p> <strong>商品重量</strong><br>
+    <% if @product.item_weight.nil? %>
+      <%= '' %>
+      <% else %>
+      <%= @product.item_weight %>
+      <% end %>
+  </p>
+  
+  
+  <p><strong>重要：免税手続き（商品受取り方法について）</strong><br>
+    ①ご注文商品は、お泊りのホテルにご注文日から最短翌日中に届きます（特急便の場合）。<br>
+    ②ホテルに商品が到着しましたら、メール・SMS等によりご連絡します。<br>
+    <strong>③（重要）商品到着のメッセージが届きましたら、ホテルのフロントにお越しください。免税品をお渡しします。</strong><br>
+    ④ホテルフロントにて、上記②メッセージ画面をフロントスタッフにお見せ下さい。 <br>
+    ⑤免税品受取りの際に、ホテルスタッフにパスポートをお見せ下さい。<br>
+  （注意点）パスポートのご提示が無い場合、免税価格での受け取りはできません。消費税を含んだ価格での購入となります。<br>
+  （注意点）商品受取り拒否、または商品受取りできなかった場合も、ご注文キャンセルはできません。ご登録クレジットカードからご注文代金が請求されます。<br>
+   商品を受け取れず、本国への転送をご希望の場合、追加の配送料金により可能ですので、スタッフにお申し付けください。
+  </p>
+  
+<h1></h1>
+
+  
+
+
+  </div>
+</div>
+
+<%= javascript_include_tag "/products/show" %>
+

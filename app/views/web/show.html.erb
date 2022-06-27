@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-2">
+      <%= render partial: "layouts/sidebar", locals: { categories: @categories, major_category_names: @major_category_names } %>
+  </div>
+    
+
+<div class="col-9">
+    <div class="container">
+      <% if @major_category_name.present? %>
+        <%= link_to "トップ", "#", major_category_name: @major_category_name %> > <%= @major_category_name %>
+        <h1><%= @major_category_name %>のカテゴリー一覧<%= @categories_show.count %>件</h1>
+      <% end %>  
+    </div>  
+      
+      <div class="row">
+        <% @categories_show.each do |category|%>
+         <div class="col-4">
+         <%= link_to products_path(category: category.id) do %>
+         
+          <% if category.major_category_name == @major_category_name %>
+             <% if category.image.attached? %>
+            <%= image_tag category.image, class: "img-thumbnail" %>
+            <% else %>
+            <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+            <% end %>
+            
+          <% else %>
+          <%= "" %>
+          <% end %>
+            
+         <% end %>
+          <div class="row">
+             <div class="col-12">
+               <h3 class="samazon-product-level mt-2">
+                 <%= category.name %><br>
+                 <label><%= category.description %>
+               </h3>
+             </div>
+          </div>
+            
+         </div>
+        <% end %>
+      </div>
+</div>
+</div>

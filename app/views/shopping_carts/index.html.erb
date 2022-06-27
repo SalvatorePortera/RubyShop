@@ -1,0 +1,172 @@
+
+<div class="container d-flex justify-content-center mt-3">
+  <div class="w-75">
+    <h1>ショッピングカート</h1>
+
+    <div class="offset-8 col-4">
+      <div class="row">
+        <div class="col-6">
+          <h2>数量</h2>
+        </div>
+        <div class="col-6">
+          <h2>小計</h2>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <% @user_cart_items.each do |user_cart_item| %>
+        <% product = Product.find(user_cart_item.item_id) %>
+        <div class="col-md-2 mt-2">
+          <%= link_to 'x', remove_shopping_cart_item_shopping_carts_path(product_id: product.id), method: :patch %>
+          
+          <%= link_to product_path(product) do %>
+            <% if product.image_url.present? %>
+              <%= image_tag product.image_url, class: "img-fuild w-100" %>
+            <% elsif product.image.attached? %>
+              <%= image_tag product.image, class: "img-fuild w-100" %>
+            <% else %>
+              <%= image_tag "/images/dummy.png", class: "img-fuild w-100" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-6 mt-4">
+          <h3 class="mt-4"><%= product.name %></h3>
+        </div>
+        <div class="col-md-2">
+          <h3 class="w-100 mt-4"><%= user_cart_item.quantity %></h3>
+        </div>
+        <div class="col-md-2">
+          <h3 class="w-100 mt-4">￥<%= user_cart_item.price_cents * user_cart_item.quantity %></h3>
+        </div>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <div class="offset-8 col-4">
+      <div class="row">
+         <div class="col-6">
+           <h2>小計</h2>
+         </div>
+         <div class="col-6">
+           <h2>￥<%= @user_cart.subtotal %></h2>
+         </div>
+       </div>
+       
+       <div class="row">
+          <div class="col-6">
+            <h2>消費税</h2>
+          </div>
+          <div class="col-6">
+            <h2>￥<%= @user_cart.taxes.fractional %></h2>
+          </div>
+        </div>
+       
+       <div class="row">
+         <div class="col-6">
+           <h2>送料</h2>
+         </div>
+         <div class="col-6">
+           <h2>￥<%= @user_cart.shipping_cost.fractional %></h2>
+         </div>
+       </div>
+       
+       <div class="row">
+         <div class="col-6">
+           <h2>特急便</h2>
+         </div>
+         <div class="col-6">
+           <h2>￥<%= @user_cart.express_cost.fractional %></h2>
+         </div>
+         <%= link_to (@user_cart.express? ? '特急便をやめる' : '特急便にする'), cart_switch_express_users_path, method: :put %>
+       </div>
+       
+      <div class="row">
+        <div class="col-6">
+          <h2>合計</h2>
+        </div>
+        <div class="col-6">
+          <h2>￥<%= @user_cart.total.fractional %></h2>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+          商品受取りの際にパスポート提示がない場合、消費税がかかります
+        </div>
+      </div>
+    </div>
+    
+    <%= form_with url: cart_users_path , method: :delete, class: "d-flex justify-content-end mt-3" do |f| %>
+      <%= link_to "買い物を続ける", web_index_path, class: "btn samazon-favorite-button border-dark text-dark mr-3" %>
+      <div class="btn samazon-submit-button" data-toggle="modal" data-target="#buy-confirm-modal">購入を確定する</div>
+       <div class="modal fade" id="buy-confirm-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">購入を確定しますか？</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn samazon-favorite-button border-dark text-dark" data-dismiss="modal">閉じる</button>
+               <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key=<%= 'pk_test_2acaafc3e0d54fc05c128500' %>></script>
+               
+             </div>
+           </div>
+         </div>
+       </div>
+    <% end %>
+
+
+<p><strong>特急便と普通便の違い</strong><br>
+  特急便：<br>
+①翌日配送。最短でご注文日の翌日中にお泊まりのホテルに届きます。遅くとも翌々日午前中に届きます。<br>
+②完全返品保証。食品を除く商品は商品受取り後14日以内の返品可能です。<br>
+③帰国後も、免税料金で商品購入が可能です。<br>
+普通便：<br>
+①商品到着まで5日前後かかります。<br>
+②返品保証なし。<br>
+</p>
+
+<p><strong>重要：免税手続き（商品受取り方法について）</strong><br>
+①ご注文商品は、お泊りのホテルにご注文日から最短翌日中に届きます（特急便の場合）。<br>
+②ホテルに商品が到着しましたら、メール・SMS等によりご連絡します。<br>
+<strong>③（重要）商品到着のメッセージが届きましたら、ホテルのフロントにお越しください。免税品をお渡しします。</strong><br>
+④ホテルフロントにて、上記②メッセージ画面をフロントスタッフにお見せ下さい。<br>
+⑤免税品受取りの際に、ホテルスタッフにパスポートをお見せ下さい。<br>
+（注意点）パスポートのご提示が無い場合、免税価格での受け取りはできません。消費税を含んだ価格での購入となります。<br>
+（注意点）商品受取り拒否、または商品受取りできなかった場合も、ご注文キャンセルはできません。ご登録クレジットカードからご注文代金が請求されます。
+商品を受け取れず、本国への転送をご希望の場合、追加の配送料金により可能ですので、スタッフにお申し付けください。<br>
+</p>
+
+<p><strong>重要：免税を受ける為の条件</strong><br>
+・パスポートの提示が必要です。<br>
+・非居住者（短期滞在）である。<br>
+・入国日から6ヶ月以内である。<br>
+・一般物品（消耗品以外）は合計税抜5,000円以上、消耗品は合計金額税抜き5,000円～50万円以下である。<br>
+・日本国内で消費するもの、送料・作業手数料は免税対象外<br>
+・お酒は関税DUTYFREE対象品目です。（お酒取扱店に限ります）<br>
+</p>
+
+<p><strong>注意事項</strong><br>
+・消耗品は袋を開封せずに、30日以内に国外に持ち出してください。<br>
+・一般物品は帰国時に持ち出してください。<br>
+・記録票を出国時に税関に提出してください。<br>
+・携帯していない等の場合は、帰国時に消費税が課税されます。<br>
+・お酒や化粧品など、100ml（g）を超える液体は、航空機内に持ち込みができません。<br>
+・スーツケースなどに入れて機内に預ける場合は、航空会社に免税品で購入した商品を預けたい旨をお申し出下さい。<br>
+</p>
+
+<p><strong>完全返品保証</strong><br>
+・特急便の場合、商品受取りから14日以内は返品可能です。（食品を除く。また、普通便の場合、返品はできません。）<br>
+・返品送料はお客様のご負担になります。<br>
+・商品受取り前の注文キャンセルは一切できません。<br>
+・商品受取り後、返品ご希望の場合、弊社からお送りしたSMS/メールからご連絡ください。<br>
+</p>
+
+
+
+  </div>
+</div>
