@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_save :downcase_email
+  #before_save :downcase_email
 
   has_many :reviews
   extend DisplayList
@@ -13,8 +13,8 @@ class User < ApplicationRecord
   scope :search_information, -> (keyword) { 
      where("id LIKE :keyword OR email LIKE :keyword", keyword: "%#{keyword}%")
    }
-  private
-  def downcase_email
-    self.email = email.downcase
-  end
+  # private
+  # def downcase_email
+  #   self.email = email.downcase
+  # end
 end
