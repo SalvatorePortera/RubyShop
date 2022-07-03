@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Samazon2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,12 +13,14 @@
   </head>
 
   <body>
-    <%= render partial: 'layouts/header' %>
-    <main class="py-4 mb-5">
-      <% if notice %><p class="alert alert-warning"><%= notice %></div><% end %>
-      <% if alert %><p class="alert alert-danger"><%= alert %></p><% end %>
-    <%= yield %>
-    </main>
-    <%= render partial: 'layouts/footer' %>
+    <div class="container">
+      <%= render partial: 'layouts/header' %>
+      <main class="py-4 mb-5 mt-2">
+        <% if notice %><p class="alert alert-warning"><%= notice %></div><% end %>
+        <% if alert %><p class="alert alert-danger"><%= alert %></p><% end %>
+      <%= yield %>
+      </main>
+      <%= render partial: 'layouts/footer' %>
+    </div>
   </body>
 </html>

@@ -1,51 +1,95 @@
-
 <div class="row">
-  <div class="col-2">
-      <%= render partial: "layouts/sidebar", locals: { categories: @categories, major_category_names: @major_category_names } %>
-    </div>
-  <div class="col-9">
-    <div class="container">
+  <div class="col-lg-3">
+    <div class="features_items">
+        <h4 class="title text-center">カテゴリから探す</h4>
+      <%= render partial: "layouts/sidebar", locals: { categories: @categories, major_categories: @major_categories } %>
+        </h4>
+    </div>  
+  </div>
+<div class="col-12 col-lg-9 padding-right">
+    <div class="features_items">
       <% if @category.present? %>
-        <%= link_to "トップ", "#", category: @major_category_name %> > <%= @category.name %>
-        <h1><%= @category.name %>の商品一覧<%= @products.count %>件</h1>
-        <%= form_with url: products_path, method: :get, local: true, class: "form-inline" do |f| %>
-          <%= f.hidden_field :sort_category, value: @category.id %>
-          並び替え
-          <% if @sorted.present? %>
-            <%= f.select :sort, @sort_list, selected: @sorted, onChange: "javascript: this.form.submit();", class: "form-inline ml-2" %>
-          <% else %>
-            <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();", class: "form-inline ml-2" %>
-          <% end %>
-        <% end %>
+      <h4 class="title text-center"><%= @category.name %>の商品一覧 <%= @products.count %>件</h4>
+      <% elsif @keyword.present? %>
+        <h4 class="title text-center"><%= @keyword %> の商品一覧 <%= @products.count %>件</h4>
       <% end %>
-    </div>
-    <div class="container mt-4">
-      <div class="row w-100">
-
-        <% @products.each do |product|%>
-        <div class="col-3">
-          <%= link_to product_path(product) do %>
-            <% if product.image_url.present? %>
-              <%= image_tag product.image_url, class: "img-thumbnail" %>
-            <% elsif product.image.attached? %>
-              <%= image_tag product.image, class: "img-thumbnail" %>
-            <% else %>
-              <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+      <div class="row justify-content-between bg-light">
+        <div class="col breadcrumbs m-2">
+          <% if @category.present? %>
+            <%= link_to "トップ", "#", category: @major_category_name %> > <%= @category.name %>
+          <% end %>
+        </div>
+        <div class="col-md-auto orderkit m-2">
+          <% if @category.present? %>
+            <%= form_with url: products_path, method: :get, local: true, class: "form-inline" do |f| %>
+              <%= f.hidden_field :sort_category, value: @category.id %>
+              並び替え
+              <% if @sorted.present? %>
+                <%= f.select :sort, @sort_list, selected: @sorted, onChange: "javascript: this.form.submit();", class: "form-inline ml-2 " %>
+              <% else %>
+                <%= f.select :sort, @sort_list, {}, onChange: "javascript: this.form.submit();", class: "form-inline ml-2  " %>
+              <% end %>
             <% end %>
           <% end %>
-          <div class="row">
-            <div class="col-12">
-              <p class="samazon-product-label mt-2">
-                <%= product.name %><br>
-                <label>¥<%= product.price %></label>
-              </p>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <% if @products.count == 0 %>
+        <div class="col-12 bg-light p-3 text-center">
+          一致する商品は見つかりませんでした。
+        </div>
+        <% end %>
+        <% @products.each do |product|%>
+        <div class="col-12 col-lg-3">
+          <div class="productCard p-2">
+            <%= link_to product_path(product),class:"productCard-link"  do %>
+              <div class="overlay"></div>
+              <% if product.image_url? %>
+              <div class="productCard-image" style="background-image: url(<%=image_url(product.image_url)%>)"></div>
+              <% else %>
+              <div class="productCard-image" style="background-image: url(<%=image_url('/images/dummy.png')%>)"></div>
+              <% end %>
+              <div class="productCard-description text-info p-1"><%=product.description%></div>
+              <div class="productCard-name text-truncate p-1"><%=product.name%></div>
+              
+            <% end %>
+            <div class="productCard-Actions pt-2 pb-2">
+              <div class="productCard-price">
+                <span>
+                  <div>
+                    <span class="productCard-price-value">￥<%=product.price%> </span>
+                    <span class="text-small productCard-pricetax-value"> (税込 ￥<%=product.price_with_tax %>)</span>
+                  </div>
+                </span>
+              </div>
             </div>
+            <div class="row">
+              <div class="col-8">
+                <div class="productCard-rating-stars">  
+                  <span class="empty-stars">
+                    <% [1, 2, 3, 4, 5].each do |n| %>
+                      <span class="star"><i class="far fa-star"></i></span>
+                    <% end %>
+                  </span>
+                  <span class="filled-stars" style="width:<%=product.rating_score/5*100%>%">
+                    <% [1, 2, 3, 4, 5].each do |n| %>
+                      <span class="star"><i class="fas fa-star"></i></span>
+                    <% end %>
+                  </span>
+                </div>
+              </div>
+              <div class="col-4">
+                <span class="score"><%=product.rating_score%></span>
+                <!--span class="legend">( <%=product.reviews.length%> 件 )</span-->
+              </div>
+            </div>
+            
           </div>
         </div>
         <% end %>
-
       </div>
     </div>
+    
     <%= paginate @products %>
   </div>
 </div>

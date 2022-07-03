@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @major_categories = MajorCategory.all #
   end
   
   def edit_address
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   
   def favorite
     @favorites = @user.likees(Product)
+    @major_categories = MajorCategory.all #
   end
   
   def cart_history_index

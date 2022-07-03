@@ -1,45 +1,43 @@
 <div class="row">
-  <div class="col-2">
-      <%= render partial: "layouts/sidebar", locals: { categories: @categories, major_category_names: @major_category_names } %>
+  <div class="col-lg-3">
+    <div class="features_items">
+        <h4 class="title text-center">カテゴリから探す</h4>
+      <%= render partial: "layouts/sidebar", locals: { categories: @categories, major_categories: @major_categories } %>
+    </div>
   </div>
-    
-
-<div class="col-9">
-    <div class="container">
-      <% if @major_category_name.present? %>
-        <%= link_to "トップ", "#", major_category_name: @major_category_name %> > <%= @major_category_name %>
-        <h1><%= @major_category_name %>のカテゴリー一覧<%= @categories_show.count %>件</h1>
-      <% end %>  
-    </div>  
-      
-      <div class="row">
-        <% @categories_show.each do |category|%>
-         <div class="col-4">
-         <%= link_to products_path(category: category.id) do %>
-         
-          <% if category.major_category_name == @major_category_name %>
-             <% if category.image.attached? %>
-            <%= image_tag category.image, class: "img-thumbnail" %>
-            <% else %>
-            <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
-            <% end %>
-            
-          <% else %>
-          <%= "" %>
-          <% end %>
-            
-         <% end %>
-          <div class="row">
-             <div class="col-12">
-               <h3 class="samazon-product-level mt-2">
-                 <%= category.name %><br>
-                 <label><%= category.description %>
-               </h3>
-             </div>
-          </div>
-            
-         </div>
+<div class="col-12 col-lg-9 padding-right">
+  <div class="features_items">
+    <h4 class="title text-center"><%= @major_category_name %>のカテゴリー一覧<%= @categories_show.count %>件</h4>
+    <div class="row justify-content-between">
+      <div class="col-md-auto breadcrumbs">
+        <% if @category.present? %>
+          <%= link_to "トップ", "#", major_category_name: @major_category_name %> > <%= @major_category_name %>
         <% end %>
       </div>
+    </div>
+    <div class="row">
+      <% @categories_show.each do |category|%>
+        <div class="col-4 col-lg-3">
+          <%= link_to products_path(category: category.id) do %>
+            <% if category.major_category_name == @major_category_name %>
+                <% if category.image.attached? %>
+                  <%= image_tag category.image, class: "img-thumbnail" %>
+                <% else %>
+                  <%= image_tag "/images/dummy.png", class: "img-thumbnail" %>
+                <% end %>
+            <% end %>
+          <% end %>
+          <div class="row">
+              <div class="col-12">
+                <p class="samazon-product-level mt-2">
+                  <%= category.name %><br>
+                  <label><%= category.description %>
+                </p>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 </div>

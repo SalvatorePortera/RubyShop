@@ -18,17 +18,17 @@ class WebController < ApplicationController
     end
 
     @major_categories = MajorCategory.all #
-    @major_category_names = Category.major_categories
-    @categories = Category.all
-    @recommend_products = Product.order(created_at: "desc").where(notdisplay_flag: false).recommend_products(RECOMMEND_PRODUCTS_PER_PAGE)
+    #@categories = Category.all
+    #@recommend_products = Product.order(created_at: "desc").where(notdisplay_flag: false).recommend_products(RECOMMEND_PRODUCTS_PER_PAGE)
   end
   
   
   def show
-    
     @categories = Category.all #
+    @major_categories = MajorCategory.all #
     @major_category_name = params[:name]
     @categories_show = Category.where(major_category_name: @major_category_name)
+    logger.debug "dddddddddddddddddddddddddddddddddddddddArticle should be valid: #{@major_category_name.inspect}"
   end
   
 

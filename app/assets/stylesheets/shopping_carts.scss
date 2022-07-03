@@ -1,3 +1,55 @@
 // Place all the styles related to the shopping_carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.shipping-cart .productCard-name{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-shadow: 0 0 3px #b3b3b3;
+    text-overflow: ellipsis;
+    height: 30px;
+}
+
+.shipping-cart .productCard-rating-stars {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: large;
+  }
+.shipping-cart .productCard-rating-stars .empty-stars {
+    color: #aaa;
+  }
+  .shipping-cart .productCard-rating-stars .filled-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: auto;
+    color: #fde16d;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-text-stroke: 1px #777;
+    text-shadow: 1px 1px #999;
+  }
+  .shipping-cart .productCard-rating-stars .star {
+    display: inline-block;
+    margin: 0 3px;
+    text-align: center;
+  }
+  .shipping-cart .productCard-price-value{
+    font-size: 20px;
+    color: red;
+  }
+  .shipping-cart .productCard-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    height: 70px;
+    max-height: 70px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

@@ -4,6 +4,7 @@ class ShoppingCartsController < ApplicationController
   def index
     @user_cart_items = ShoppingCartItem.user_cart_items(@user_cart)
     @products_index = Product.where(id: @user_cart_items.map(&:item_id)).index_by(&:id)
+    @major_categories = MajorCategory.all #
   end
   
   def show

@@ -1,125 +1,160 @@
 
-<div class="container d-flex justify-content-center mt-3">
-  <div class="w-75">
-    <h1>ショッピングカート</h1>
-
-    <div class="offset-8 col-4">
-      <div class="row">
-        <div class="col-6">
-          <h2>数量</h2>
+<div class="container shipping-cart">
+    <div class="features_items">
+      <h4 class="title text-center">カテゴリから探す</h4>
+      <!--div class="offset-8 col-4">
+        <div class="row">
+          <div class="col-6">
+            <h2>数量</h2>
+          </div>
+          <div class="col-6">
+            <h2>小計</h2>
+          </div>
         </div>
-        <div class="col-6">
-          <h2>小計</h2>
+      </div-->
+      <hr>
+      <div class="row">
+        <% @user_cart_items.each do |user_cart_item| %>
+          <% product = Product.find(user_cart_item.item_id) %>
+          <div class="col-md-2 mt-2">
+            <%= link_to '削除', remove_shopping_cart_item_shopping_carts_path(product_id: product.id),class:'btn btn-sm btn-block btn-outline-danger', method: :patch %>
+            
+            <%= link_to product_path(product) do %>
+              <% if product.image_url.present? %>
+                <%= image_tag product.image_url, class: "img-fuild w-100" %>
+              <% elsif product.image.attached? %>
+                <%= image_tag product.image, class: "img-fuild w-100" %>
+              <% else %>
+                <%= image_tag "/images/dummy.png", class: "img-fuild w-100" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-md-6 mt-4">
+            <div class="productCard-description text-success p-1"><%=product.description%></div>
+            <div class="productCard-name text-secondary text-truncate"><%=product.name%></div>
+            <div class="row mt-2 mt-2">
+              <div class="col-5">
+                <div class="productCard-rating-stars">  
+                  <span class="empty-stars">
+                    <% [1, 2, 3, 4, 5].each do |n| %>
+                      <span class="star"><i class="far fa-star"></i></span>
+                    <% end %>
+                  </span>
+                  <span class="filled-stars" style="width:<%=product.rating_score/5*100%>%">
+                    <% [1, 2, 3, 4, 5].each do |n| %>
+                      <span class="star"><i class="fas fa-star"></i></span>
+                    <% end %>
+                  </span>
+                </div>
+              </div>
+              <div class="col-7">
+                <span class="score"><%=product.rating_score%></span>
+                <span class="legend">( <%=product.review_quantity %> 件 )</span>
+              </div>
+            </div>
+            <div class="productCard-Actions pt-2 pb-2">
+              <div class="productCard-price">
+                <span>
+                  <div>
+                    <span class="productCard-price-value">￥<%=product.price%> </span>
+                    <span class="text-small productCard-pricetax-value"> (税込 ￥<%=product.price_with_tax %>)</span>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h3 class="w-100 mt-4">数量 : <%= user_cart_item.quantity %></h3>
+          </div>
+          <div class="col-md-2">
+            <h3 class="w-100 mt-4">小計 : ￥<%= user_cart_item.price_cents * user_cart_item.quantity %></h3>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="offset-lg-8 col-lg-4 col-12">
+        <div class="row">
+          <div class="col-6">
+            <h2>小計</h2>
+          </div>
+          <div class="col-6">
+            <h2>￥<%= @user_cart.subtotal %></h2>
+          </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-6">
+              <h2>消費税</h2>
+            </div>
+            <div class="col-6">
+              <h2>￥<%= @user_cart.taxes.fractional %></h2>
+            </div>
+          </div>
+        
+        <div class="row">
+          <div class="col-6">
+            <h2>送料</h2>
+          </div>
+          <div class="col-6">
+            <h2>￥<%= @user_cart.shipping_cost.fractional %></h2>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-6">
+            <h2>特急便</h2>
+          </div>
+          <div class="col-6">
+            <h2>￥<%= @user_cart.express_cost.fractional %></h2>
+          </div>
+          <%= link_to (@user_cart.express? ? '特急便をやめる' : '特急便にする'), cart_switch_express_users_path, method: :put %>
+        </div>
+        
+        <div class="row">
+          <div class="col-6">
+            <h2>合計</h2>
+          </div>
+          <div class="col-6">
+            <h2>￥<%= @user_cart.total.fractional %></h2>
+          </div>
+          <div class="col-12 d-flex justify-content-end">
+            商品受取りの際にパスポート提示がない場合、消費税がかかります
+          </div>
         </div>
       </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <% @user_cart_items.each do |user_cart_item| %>
-        <% product = Product.find(user_cart_item.item_id) %>
-        <div class="col-md-2 mt-2">
-          <%= link_to 'x', remove_shopping_cart_item_shopping_carts_path(product_id: product.id), method: :patch %>
-          
-          <%= link_to product_path(product) do %>
-            <% if product.image_url.present? %>
-              <%= image_tag product.image_url, class: "img-fuild w-100" %>
-            <% elsif product.image.attached? %>
-              <%= image_tag product.image, class: "img-fuild w-100" %>
-            <% else %>
-              <%= image_tag "/images/dummy.png", class: "img-fuild w-100" %>
-            <% end %>
-          <% end %>
+    
+      <%= form_with url: cart_users_path , method: :delete, class: "d-flex justify-content-center mt-3 mt-3 mb-3" do |f| %>
+        <div class="row">
+          <div class="col-6">
+            <%= link_to "買い物を続ける", web_index_path, class: "btn btn-block samazon-favorite-button border-dark text-dark mr-3" %>
+          </div>
+          <div class="col-6">
+            <div class="btn btn-block samazon-submit-button" data-toggle="modal" data-target="#buy-confirm-modal">購入を確定する</div>
+          </div>
         </div>
-        <div class="col-md-6 mt-4">
-          <h3 class="mt-4"><%= product.name %></h3>
-        </div>
-        <div class="col-md-2">
-          <h3 class="w-100 mt-4"><%= user_cart_item.quantity %></h3>
-        </div>
-        <div class="col-md-2">
-          <h3 class="w-100 mt-4">￥<%= user_cart_item.price_cents * user_cart_item.quantity %></h3>
+        
+        
+        <div class="modal fade" id="buy-confirm-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">購入を確定しますか？</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn samazon-favorite-button border-dark text-dark" data-dismiss="modal">閉じる</button>
+                <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key=<%= 'pk_test_2acaafc3e0d54fc05c128500' %>></script>
+                
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-
-    <hr>
-
-    <div class="offset-8 col-4">
-      <div class="row">
-         <div class="col-6">
-           <h2>小計</h2>
-         </div>
-         <div class="col-6">
-           <h2>￥<%= @user_cart.subtotal %></h2>
-         </div>
-       </div>
-       
-       <div class="row">
-          <div class="col-6">
-            <h2>消費税</h2>
-          </div>
-          <div class="col-6">
-            <h2>￥<%= @user_cart.taxes.fractional %></h2>
-          </div>
-        </div>
-       
-       <div class="row">
-         <div class="col-6">
-           <h2>送料</h2>
-         </div>
-         <div class="col-6">
-           <h2>￥<%= @user_cart.shipping_cost.fractional %></h2>
-         </div>
-       </div>
-       
-       <div class="row">
-         <div class="col-6">
-           <h2>特急便</h2>
-         </div>
-         <div class="col-6">
-           <h2>￥<%= @user_cart.express_cost.fractional %></h2>
-         </div>
-         <%= link_to (@user_cart.express? ? '特急便をやめる' : '特急便にする'), cart_switch_express_users_path, method: :put %>
-       </div>
-       
-      <div class="row">
-        <div class="col-6">
-          <h2>合計</h2>
-        </div>
-        <div class="col-6">
-          <h2>￥<%= @user_cart.total.fractional %></h2>
-        </div>
-        <div class="col-12 d-flex justify-content-end">
-          商品受取りの際にパスポート提示がない場合、消費税がかかります
-        </div>
-      </div>
-    </div>
-    
-    <%= form_with url: cart_users_path , method: :delete, class: "d-flex justify-content-end mt-3" do |f| %>
-      <%= link_to "買い物を続ける", web_index_path, class: "btn samazon-favorite-button border-dark text-dark mr-3" %>
-      <div class="btn samazon-submit-button" data-toggle="modal" data-target="#buy-confirm-modal">購入を確定する</div>
-       <div class="modal fade" id="buy-confirm-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="staticBackdropLabel">購入を確定しますか？</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn samazon-favorite-button border-dark text-dark" data-dismiss="modal">閉じる</button>
-               <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key=<%= 'pk_test_2acaafc3e0d54fc05c128500' %>></script>
-               
-             </div>
-           </div>
-         </div>
-       </div>
-    <% end %>
-
-
+  
+</div>
 <p><strong>特急便と普通便の違い</strong><br>
   特急便：<br>
 ①翌日配送。最短でご注文日の翌日中にお泊まりのホテルに届きます。遅くとも翌々日午前中に届きます。<br>
@@ -165,8 +200,3 @@
 ・商品受取り前の注文キャンセルは一切できません。<br>
 ・商品受取り後、返品ご希望の場合、弊社からお送りしたSMS/メールからご連絡ください。<br>
 </p>
-
-
-
-  </div>
-</div>

@@ -1,5 +1,40 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-bottom mt-5">
-  <%= link_to web_index_path, class: "navbar-brand mx-auto" do %>
-    <%= image_tag "/images/logo.jpg", class: "img-fuild" %>
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-bottom mt-5 text-center">
+  <% if user_signed_in? %>
+    <ul class="footer-buttons list-unstyled justify-content-around">
+      <li>
+        <%= link_to web_index_path, class: "btn btn-link text-center" do %>
+          <i class="fas fa-home text-dark"></i><!--div class="text-dark">ホームページ</div-->
+        <% end %>
+      </li>
+      
+      <li>
+        <%= link_to mypage_users_path, class: "btn btn-link text-center" do %>
+          <i class="fas fa-user text-dark"></i><!--div class="text-dark">マイページ</div-->
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to mypage_favorite_users_path, class: "nav-link text-center" do %>
+          <i class="fas fa-heart text-dark"></i><!--br/><div class="text-dark">お気に入り</div-->
+        <% end %>
+      </li>
+      <li>
+        <%= link_to cart_users_path, class: "nav-link text-center" do %>
+          <i class="fas fa-shopping-cart text-dark"></i><!--br/><div class="text-dark">カート</div-->
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#", class: "nav-link text-center", id:"back-to-top" do %>
+          <i class="fas fa-arrow-up text-dark"></i><!--br/><div class="text-dark">カート</div-->
+        <% end %>
+      </li>
+    </ul>
+    <%= link_to web_index_path, class: "navbar-brand brand-link mx-auto" do %>
+      <%= image_tag "/images/logo.jpg", class: "img-fuild" %>
+    <% end %>
+  <% else %>
+    <%= link_to web_index_path, class: "navbar-brand mx-auto" do %>
+      <%= image_tag "/images/logo.jpg", class: "img-fuild" %>
+    <% end %>
   <% end %>
 </nav>

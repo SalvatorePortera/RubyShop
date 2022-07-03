@@ -1,21 +1,5 @@
-@font-face {
-    font-family: YuGo;
-    src: local(YuGo-Medium);
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-  }
-  
-  @font-face {
-    font-family: YuGo;
-    src: local(YuGo-Bold);
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-  }
- 
   h1 {
-    font-family: YuGo;
+    
     font-size: 26px;
     font-weight: bold;
     font-stretch: normal;
@@ -25,7 +9,7 @@
   }
  
   h2 {
-    font-family: YuGo;
+    
     font-size: 22px;
     font-weight: bold;
     font-stretch: normal;
@@ -33,9 +17,7 @@
     line-height: normal;
     letter-spacing: normal;
   }
- 
-  h3 {
-    font-family: YuGo;
+   h3 {
     font-size: 18px;
     font-weight: bold;
     font-stretch: normal;
@@ -43,9 +25,41 @@
     line-height: normal;
     letter-spacing: 0.04px;
   }
- 
+  p.samazon-product-level{
+    color: #222;
+  }
+  h4.title {
+    color: #0fbe9f;
+    font-weight: 700;
+    margin: 0 15px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+    font-size: 15px;
+}
+h4.title:after {
+    content: " ";
+    position: absolute;
+    border: 1px solid #f5f5f5;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: -2;
+}
+h4.title:before {
+    content: " ";
+    position: absolute;
+    background: #fff;
+    bottom: -6px;
+    width: 220px;
+    height: 30px;
+    z-index: -1;
+    left: 50%;
+    margin-left: -110px;
+}
   big {
-    font-family: YuGo;
+    
     font-size: 16px;
     font-weight: 500;
     font-stretch: normal;
@@ -55,7 +69,7 @@
   }
  
   body {
-    font-family: YuGo;
+    font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
@@ -65,7 +79,7 @@
   }
  
   caption {
-    font-family: YuGo;
+    
     font-size: 12px;
     font-weight: 500;
     font-stretch: normal;
@@ -75,14 +89,13 @@
   }
  
   label {
-    font-family: YuGo;
-    font-size: 14px;
-    font-weight: bold;
+    
+    font-size: 12px;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #191919;
+    color: #696763;
   }
 
 .samazon-login-input {
@@ -91,8 +104,129 @@
   background-color: #ffffff;
 }
 
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+#navbar-mobile-menu-close.collapsed {
+  z-index: -1;
+}
+#navbar-mobile-menu-close {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.navbar .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,0.5);
+  border-color: rgba(0,0,0,0.1);
+}
+.navbar-toggler:hover, .navbar-toggler:focus {
+  text-decoration: none;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+  cursor: pointer;
+}
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.navbar-toggler span {
+  display: block;
+  background-color: #555;
+  height: 2px;
+  width: 25px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  transform: rotate(0deg);
+  position: relative;
+  opacity: 1;
+}
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,0.5);
+  border-color: rgba(0,0,0,0.1);
+}
+.navbar-toggler:not(.collapsed) span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+  visibility: hidden;
+  background-color: transparent;
+}
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-5px) translateX(5px);
+}
+
+.navbar-toggler span:nth-child(1) {
+  transition: transform .3s ease-in-out;
+}
+.navbar-toggler span:nth-child(3) {
+  transition: transform .3s ease-in-out;
+}
+.card-header{
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+}
+.card-header .productCard-rating-stars{
+  font-size: medium;
+}
+.card-header .score,.card-header .legend{
+  font-size: small;
+}
+.card-body p{
+  margin-top: 5px;
+  line-height: 1.6;
+}
+ul.footer-buttons{
+  display: none;
+}
+ul.footer-buttons li{
+  display: inline;
+  margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .samazon-check-label {
-  font-family: YuGo;
+  
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -108,7 +242,7 @@
 }
 
 .samazon-require-input-label-text {
-  font-family: YuGo;
+  
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -119,7 +253,7 @@
 }
 
 .samazon-submit-button {
-  font-family: YuGo;
+  
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -132,7 +266,7 @@
 }
 
 .samazon-login-text {
-  font-family: YuGo;
+  
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -174,20 +308,17 @@
   color: #ffffff;
 }
 
-.samazon-favorite-button {
-  border-radius: 2px;
-  border: solid 1px #0fbe9f;
-  background-color: #ffffff;
+.productDetails-price-value {
+  margin-top: 4px;
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
 }
-
-.text-favorite {
-  color: #0fbe9f;
-}
-
 .samazon-sidebar-category-label {
   width: 156px;
   height: 20px;
-  font-family: YuGo;
+  
   font-size: 13px;
   font-weight: 500;
   font-stretch: normal;
@@ -203,7 +334,7 @@
 }
 
 .dashboard-edit-link {
-  font-family: YuGo;
+  
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -214,7 +345,7 @@
 }
 
 .dashboard-delete-link {
-  font-family: YuGo;
+  
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -235,7 +366,21 @@
 .w-80 {
   width: 80%!important;
 }
-
+#navbarSupportedContent{
+  flex-grow: 0;
+}
+#navbarSupportedContent ul li a i{
+  font-size: 27px;
+}
+#navbarSupportedContent ul li a span{
+  font-size: 11px;
+}
+#navbarSupportedContent .sider-bar{
+  display: none;
+}
+.samazon-logo-lini{
+  height: 30px;
+}
 .samazon-button {
   border-radius: 2px;
   border: solid 1px #b2b2b2;
@@ -248,4 +393,312 @@
 
 .review-score-color:focus {
   color: #0fbe9f;
+}
+/*******************Porduts*****************/
+.productCard{
+  border: 1px solid #F7F7F5;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.productCard-link .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.productCard-link:hover .overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.productCard .productCard-link {
+  color: #221815;
+  text-decoration: none;
+}
+.productCard .productCard-image {
+  width: 100%;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+  border-radius: 3px;
+  transition: box-shadow .2s ease;
+}
+.productCard .productCard-name {
+  font-weight: 700;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-shadow: 0 0 3px #b3b3b3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30px;
+}
+.productCard .score {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #f2ab00;
+}
+.productCard-description{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  height: 32px;
+  max-height: 32px;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.productCard .legend {
+  margin-left: 5px;
+  font-size: 13px;
+}
+.productCard .productCard-Actions {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #b3b3b3;
+}
+.productCard.-result .productCard-Actions .productCard-price {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+.productCard .productCard-price {
+  line-height: 1.3;
+}
+.productCard .productCard-price .productCard-price-setText {
+  width: 100%;
+  display: block;
+}
+.productCard .productCard-price .productCard-price-value {
+  font-weight: 700;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  color: #bf0000;
+}
+.productCard .productCard-price .productCard-pricetax-value {
+  font-weight: 700;
+  font-size: 12px;
+  color: #bf0000;
+}
+.productCard-rating-stars {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: small;
+}
+.productCard-rating-stars .empty-stars {
+  color: #aaa;
+}
+.productCard-rating-stars .filled-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: auto;
+  color: #fde16d;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-stroke: 1px #777;
+  text-shadow: 1px 1px #999;
+}
+.productCard-rating-stars .star {
+  display: inline-block;
+  margin: 0 3px;
+  text-align: center;
+}
+.category-products {
+  border: 1px solid #ccc;
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  padding-top: 15px;
+}
+.category-products .panel-default .panel-heading {
+  background-color: #FFFFFF;
+  border: 0 none;
+  color: #FFFFFF;
+}
+
+.panel-body ul li{
+  line-height: 25px;
+
+}
+.panel-group .panel-heading + .panel-collapse .panel-body {
+  border-top: 0 none;
+}
+
+.features_items {
+  overflow: hidden;
+}
+
+.category-products .panel-default .panel-heading .panel-title a{
+  color: #e6509b;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+}
+.category-products .panel-default .panel-heading .panel-title a h4{
+  font-weight: 700;
+  font-size: 15px;
+  color: #333;
+}
+.category-products .panel-default .panel-heading .panel-title a.collapsed {
+  color: #333;
+}
+.category-products .panel-default .panel-heading .panel-title a.collapsed i.fa-angle-up{
+  display: none;
+}
+.category-products .panel-default .panel-heading .panel-title a.collapsed i.fa-angle-down{
+  display:block;
+}
+.category-products .panel-default .panel-heading .panel-title a span{
+  color:#e6509b;
+  font-size: 25px;
+}
+.category-products .panel-default .panel-heading .panel-title a i.fa-angle-up{
+  display: block;
+}
+.category-products .panel-default .panel-heading .panel-title a i.fa-angle-down{
+  display:none;
+}
+
+.panel-body ul li a {
+  color: #333;
+  font-size: 12px;
+  
+}
+
+@media only screen and (max-width: 575.98px) {
+  body{
+    font-size: 20px;
+  }
+  .card-header{
+    font-size: 25px;
+  }
+  .card-header .score{
+    font-size: revert;
+  }
+  .card-header .legend{
+    font-size: large;
+  }
+  .productCard-price-value{
+    font-size: 28px;
+  }
+  .productCard .productCard-price .productCard-pricetax-value{
+    font-size: 20px;
+  }
+  .productCard-rating-stars{
+    font-size: 25px;
+  }
+  .category-products .panel-default .panel-heading .panel-title a h4{
+    font-size: 25px;
+  }
+  .productCard-description{
+    height: 46px;
+    max-height: 46px;
+  }
+  .productCard .score{
+    font-size: 25px;
+  }
+  .navbar-expand-lg form,.navbar-expand-lg form .form-group,.samazon-header-search-input{
+    flex:1;
+  }
+  .panel-body ul li a{
+    font-size: 16px;
+  }
+  .productDetails-price-value{
+    font-size: 25px;
+  }
+  a.brand-link{
+    display: none;
+  }
+  .footer-buttons{
+    display: flex !important;
+  }
+  
+  .footer-buttons li a div{
+    font-size: 9px;
+  }
+  .footer-buttons li a i{
+    font-size: 25px;
+  }
+  #navbarSupportedContent li.nav-item{
+    display: none;
+  }
+  #navbarSupportedContent .sider-bar{
+    display: inherit;
+  }
+  #navbarSupportedContent #hmenu-header {
+      flex-direction: column;
+      justify-content: flex-end;
+      background-color: #232f3e;
+      width: 100%;
+      color: #fff;
+  }
+  #navbarSupportedContent #hmenu-header #hmenu-header-top {
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+  }
+  #navbarSupportedContent #hmenu-header #hmenu-header-top a{
+    float: right;
+    color: #ccc;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  #navbarSupportedContent #hmenu-header #hmenu-header-top a span{
+    display: contents !important;
+  }
+  #navbarSupportedContent ul li a i {
+      font-size: 40px;
+  }
+  #navbarSupportedContent #hmenu-header #hmenu-header-top #hmenu-header-account {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px 20px 0 20px;
+  }
+  #navbarSupportedContent #hmenu-header #hmenu-header-bottom {
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+  }
+}
+@media (min-width: 576px) { 
+  .navbar-expand-lg form,.navbar-expand-lg form .form-group,.samazon-header-search-input{
+    flex:1;
+  }
+  
+}
+@media (max-width: 991.98px){
+  .navbar-collapse.show {
+      left: 0;
+      transition: left 300ms ease-in-out;
+  }
+  .navbar-collapse {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 300px;
+      max-width: 75%;
+      height: 100vh;
+      background: #fff;
+      box-shadow:10px 0px 35px -10px rgba(1,36,101,0.18);
+      z-index: 99;
+  }
+  .navbar-collapse.collapsing{left:-100%;transition:height 0s ease}
+  .navbar-toggler.collapsed ~ .navbar-collapse {
+      transition: left 500ms ease-in-out;
+  }
+  
 }
