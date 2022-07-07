@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-bottom mt-5 text-center">
-  <% if user_signed_in? %>
+  <% #if user_signed_in? %>
     <ul class="footer-buttons list-unstyled justify-content-around">
       <li>
         <%= link_to web_index_path, class: "btn btn-link text-center" do %>
@@ -24,17 +24,17 @@
         <% end %>
       </li>
       <li>
-        <%= link_to "#", class: "nav-link text-center", id:"back-to-top" do %>
-          <i class="fas fa-arrow-up text-dark"></i><!--br/><div class="text-dark">カート</div-->
-        <% end %>
+        <button class="collapsed navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="line-bar"></span>
+                <span class="line-bar"></span>
+                <span class="line-bar"></span>
+        </button>
       </li>
     </ul>
     <%= link_to web_index_path, class: "navbar-brand brand-link mx-auto" do %>
       <%= image_tag "/images/logo.jpg", class: "img-fuild" %>
     <% end %>
-  <% else %>
-    <%= link_to web_index_path, class: "navbar-brand mx-auto" do %>
-      <%= image_tag "/images/logo.jpg", class: "img-fuild" %>
-    <% end %>
-  <% end %>
+  <% #else %>
+    
+  <% #end %>
 </nav>

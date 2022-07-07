@@ -1,43 +1,10 @@
-<div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <%= image_tag("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg", :alt => "Phone image",class:"img-fluid") %>
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <%= form_with url: home_guest_sign_in_path, method: :post do |form| %>
-          <div class="form-outline mb-4">
-            <%= label_tag 'loginEmail', class:"form-label" do %>Email address<% end %>
-            <%= email_field_tag 'loginEmail',nil,class: "form-control form-control-lg" %>
-          </div>
-          <div class="form-outline mb-4">
-            <%= label_tag 'loginPassword', class:"form-label" do %>Password<% end %>
-            <%= password_field_tag 'loginPassword',nil,class: "form-control form-control-lg" %>
-          </div>
-
-          <div class="d-flex justify-content-around align-items-center mb-4">
-            <!-- Checkbox -->
-            <div class="form-check">
-              <%= check_box_tag 'loginRememberMe',1,true,class: "form-check-input" %>
-              <%= label_tag 'loginRememberMe', class:"form-check-label" do %> Remember me <% end %>
-            </div>
-            <a href="#!">Forgot password?</a>
-          </div>
-
-          <!-- Submit button -->
-          <%= button_tag 'Sign in',type: 'submit',class: "btn btn-primary btn-lg btn-block" %>
-          
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-          </div>
-
-          <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="#!"
-            role="button">
-            <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
-          </a>
-          <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="#!"
-            role="button">
-            <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
-
-        <% end %>
-      </div>
-    </div>
+<div class="d-flex flex-column">
+  <div class="pt-5 pb-5 text-center"><h1>Hello World!</h1></div>
+  <div class="pt-5 mt-5 pb-5 mb-5">
+    <%= form_with url: home_guest_sign_in_path, method: :post,class:"d-flex justify-content-center" do |form| %>
+      <%= image_submit_tag "/images/enter.png", class: "xta",name:nil %>
+    <% end %>
+  </div>
+  <div class="pt-5 pb-5 text-center"><h1>Hello World!</h1></div>
+</div>
 <%# <%=javascript_include_tag "/home/index" %>  

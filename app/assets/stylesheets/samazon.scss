@@ -28,12 +28,15 @@
   p.samazon-product-level{
     color: #222;
   }
+  main{
+    margin-top: 80px;;
+  }
   h4.title {
     color: #0fbe9f;
     font-weight: 700;
     margin: 0 15px;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     position: relative;
     font-size: 15px;
 }
@@ -108,6 +111,9 @@ h4.title:before {
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
+}
+.navbar #backBtn{
+  display: none;
 }
 #navbar-mobile-menu-close.collapsed {
   z-index: -1;
@@ -211,7 +217,7 @@ ul.footer-buttons{
 }
 ul.footer-buttons li{
   display: inline;
-  margin: 0 10px;
+  margin: 0 6px;
 }
 
 
@@ -307,7 +313,9 @@ ul.footer-buttons li{
 .samazon-header-shoppingcart-icon {
   color: #ffffff;
 }
-
+.shoppingcart-del-product{
+  position:absolute;
+}
 .productDetails-price-value {
   margin-top: 4px;
   margin-left: 8px;
@@ -438,6 +446,17 @@ ul.footer-buttons li{
   text-overflow: ellipsis;
   height: 30px;
 }
+.cartCard-name {
+  font-weight: 700;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-shadow: 0 0 3px #b3b3b3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30px;
+}
 .productCard .score {
   margin-left: 5px;
   font-size: 15px;
@@ -497,7 +516,18 @@ ul.footer-buttons li{
   white-space: nowrap;
   font-size: small;
 }
+.cartCard-rating-stars {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: small;
+}
 .productCard-rating-stars .empty-stars {
+  color: #aaa;
+}
+.cartCard-rating-stars .empty-stars {
   color: #aaa;
 }
 .productCard-rating-stars .filled-stars {
@@ -511,7 +541,22 @@ ul.footer-buttons li{
   -webkit-text-stroke: 1px #777;
   text-shadow: 1px 1px #999;
 }
+.cartCard-rating-stars .filled-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: auto;
+  color: #fde16d;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-stroke: 1px #777;
+  text-shadow: 1px 1px #999;
+}
 .productCard-rating-stars .star {
+  display: inline-block;
+  text-align: center;
+}
+.cartCard-rating-stars .star {
   display: inline-block;
   margin: 0 3px;
   text-align: center;
@@ -576,10 +621,15 @@ ul.footer-buttons li{
   font-size: 12px;
   
 }
-
+p.h3{
+  font-size: 15px;
+}
 @media only screen and (max-width: 575.98px) {
-  body{
-    font-size: 20px;
+  main {
+      margin-top: 45px;
+  }
+  h2{
+    font-size: 16px;
   }
   .card-header{
     font-size: 25px;
@@ -590,15 +640,7 @@ ul.footer-buttons li{
   .card-header .legend{
     font-size: large;
   }
-  .productCard-price-value{
-    font-size: 28px;
-  }
-  .productCard .productCard-price .productCard-pricetax-value{
-    font-size: 20px;
-  }
-  .productCard-rating-stars{
-    font-size: 25px;
-  }
+  
   .category-products .panel-default .panel-heading .panel-title a h4{
     font-size: 25px;
   }
@@ -606,8 +648,8 @@ ul.footer-buttons li{
     height: 46px;
     max-height: 46px;
   }
-  .productCard .score{
-    font-size: 25px;
+  .productCard .productCard-price .productCard-price-value{
+    font-size: 13px;
   }
   .navbar-expand-lg form,.navbar-expand-lg form .form-group,.samazon-header-search-input{
     flex:1;
@@ -630,6 +672,9 @@ ul.footer-buttons li{
   }
   .footer-buttons li a i{
     font-size: 25px;
+  }
+  .navbar #backBtn{
+    display: block;
   }
   #navbarSupportedContent li.nav-item{
     display: none;
@@ -672,6 +717,12 @@ ul.footer-buttons li{
       flex-direction: column;
       justify-content: flex-end;
       width: 100%;
+  }
+  .left-side-category{
+    display: none;
+  }
+  .samazon-logo-lini{
+    display: none;
   }
 }
 @media (min-width: 576px) { 
